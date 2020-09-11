@@ -21,12 +21,20 @@ class Timer(commands.Cog):
 
         await ctx.send(msg)
 
+    @commands.command(name="clear_timers")
+    async def clear_timers(self, ctx: commands.Context) -> None:
+        """Clears all active timers."""
+        self.timers.clear()
+        self.check_timer_end.cancel()
+
+        await ctx.send("Alle Timer gelöscht.")
+
     @commands.command(name="timer")
     async def timer(self, ctx: commands.Context, minutes: int) -> None:
         """Creates a timer for x minutes."""
         # Check if minutes is positive
-        if minutes <= 0:
-            await ctx.send("Ein Fehler ist aufgetreten.")
+        if 0 <= minutes <= 300:
+            await ctx.send("Zeit muss zwischen 0-300 Minuten sein.")
             return
 
         # Calculate dates
