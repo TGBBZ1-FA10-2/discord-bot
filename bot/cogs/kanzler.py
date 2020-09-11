@@ -7,10 +7,6 @@ import math
 KANZLER_ID = 173659630470299651
 
 
-def check_not_kanzler(ctx: commands.Context) -> bool:
-    return ctx.message.author.id != KANZLER_ID
-
-
 class Kanzler(commands.Cog):
     max_mute_time = 181
 
@@ -20,7 +16,6 @@ class Kanzler(commands.Cog):
         self._end_time = None
 
     @commands.command(name="kanzler", aliases=["k"])
-    @commands.check(check_not_kanzler)
     async def mute_kanzler(self, ctx: commands.Context) -> None:
         """Mutes Kanzler!"""
         # Get discord server, kanzlers user object and muted role from ctx
