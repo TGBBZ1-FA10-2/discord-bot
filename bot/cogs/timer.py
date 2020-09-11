@@ -33,7 +33,7 @@ class Timer(commands.Cog):
     async def timer(self, ctx: commands.Context, minutes: int) -> None:
         """Creates a timer for x minutes."""
         # Check if minutes is positive
-        if 0 <= minutes <= 300:
+        if not 0 <= minutes <= 300:
             await ctx.send("Zeit muss zwischen 0-300 Minuten sein.")
             return
 
