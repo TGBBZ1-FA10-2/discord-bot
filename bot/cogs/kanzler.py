@@ -37,7 +37,7 @@ class Kanzler(commands.Cog):
 
         self.remove_muted_role.start(ctx)
 
-        msg = f"{kanzler.mention} wurde für {muted_time}s stummgeschalten!"
+        msg = f"Kanzler wurde für {muted_time}s stummgeschalten!"
         # Number of party faces depending on the amount of muted time.
         # 10 can only be reached with max mute of 180 seconds (-> math.floor)
         # max time is decreased by one because random.randint does only return
@@ -57,6 +57,6 @@ class Kanzler(commands.Cog):
             muted_role = discord.utils.get(ctx.guild.roles, name="muted")
 
             await kanzler.remove_roles(muted_role)
-            await ctx.send(f"{kanzler.mention} ist wieder frei! :scream:")
+            await ctx.send("Kanzler ist wieder frei! :scream:")
 
             self.remove_muted_role.cancel()
